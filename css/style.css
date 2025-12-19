@@ -21,19 +21,22 @@ body {
   color: var(--text);
   font-family: 'Montserrat', sans-serif;
   background-image:
-    linear-gradient(rgba(12,12,15,0.95), rgba(12,12,15,0.98)),
+    linear-gradient(rgba(12, 12, 15, 0.95), rgba(12, 12, 15, 0.98)),
     url('https://www.transparenttextures.com/patterns/dark-wood.png');
   background-size: auto, 300px 300px;
   line-height: 1.6;
   padding-bottom: 80px;
 }
 
-h1, h2, h3, .logo {
+h1,
+h2,
+h3,
+.logo {
   font-family: 'Cinzel', serif;
   color: var(--gold);
   text-transform: uppercase;
   letter-spacing: 2px;
-  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
 .blood-text {
@@ -66,21 +69,60 @@ header {
   font-size: 2rem;
   font-weight: 900;
 }
+
 .logo span {
   color: var(--blood-light);
+}
+
+/* навигация */
+.nav-links {
+  display: flex;
+  gap: 15px;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  list-style: none;
+  padding: 0;
+  margin: 0;
 }
 
 .nav-links a {
   color: var(--text-muted);
   text-decoration: none;
-  margin-left: 25px;
   font-family: 'Cinzel', serif;
   font-size: 0.95rem;
-  transition: color 0.3s;
+  padding: 10px 15px;
+  border-radius: 4px;
+  transition: all 0.3s;
+  text-align: center;
 }
+
 .nav-links a:hover {
   color: var(--gold);
   text-shadow: 0 0 6px var(--gold-dim);
+  background: rgba(212, 175, 55, 0.1);
+}
+
+/* адаптив для навигации */
+@media (max-width: 768px) {
+  .nav-container {
+    flex-direction: column;
+    padding: 10px;
+    gap: 10px;
+  }
+
+  .nav-links {
+    flex-direction: column;
+    width: 100%;
+    align-items: stretch;
+  }
+
+  .nav-links a {
+    width: 100%;
+    text-align: center;
+    padding: 12px;
+    font-size: 1rem;
+  }
 }
 
 /* контейнер */
@@ -96,10 +138,12 @@ header {
   gap: 30px;
   margin: 40px 0;
 }
+
 .grid-2 {
   grid-template-columns: 1fr 1fr;
   align-items: center;
 }
+
 .grid-3 {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
@@ -111,17 +155,20 @@ header {
   padding: 30px;
   position: relative;
   transition: all 0.4s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.5);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
 }
+
 .card:hover {
   border-color: var(--gold);
   transform: translateY(-5px);
   box-shadow: 0 8px 25px rgba(106, 4, 15, 0.4);
 }
+
 .card::before {
   content: '';
   position: absolute;
-  top: 0; left: 0;
+  top: 0;
+  left: 0;
   width: 4px;
   height: 100%;
   background: var(--blood);
@@ -141,6 +188,7 @@ header {
   letter-spacing: 1px;
   transition: all 0.3s;
 }
+
 .btn:hover {
   background: linear-gradient(135deg, var(--blood-light), var(--blood));
   color: white;
@@ -154,12 +202,18 @@ header {
   gap: 15px;
   margin-top: 20px;
 }
+
 .boost-gallery img {
   width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: center;
   border: 1px solid var(--border);
   filter: contrast(110%) sepia(20%);
   transition: transform 0.3s;
+  border-radius: 4px;
 }
+
 .boost-gallery img:hover {
   transform: scale(1.03);
   border-color: var(--gold-dim);
@@ -169,12 +223,14 @@ header {
 .form-group {
   margin-bottom: 20px;
 }
+
 .form-group label {
   display: block;
   color: var(--gold);
   margin-bottom: 8px;
   font-family: 'Cinzel', serif;
 }
+
 .form-group input,
 .form-group select {
   width: 100%;
@@ -184,6 +240,7 @@ header {
   color: var(--text);
   font-family: 'Montserrat', sans-serif;
 }
+
 .form-group input:focus,
 .form-group select:focus {
   outline: none;
@@ -196,12 +253,14 @@ table {
   border-collapse: collapse;
   margin: 20px 0;
 }
+
 th {
   color: var(--gold);
   padding: 15px;
   border-bottom: 2px solid var(--gold-dim);
   text-align: left;
 }
+
 td {
   padding: 15px;
   border-bottom: 1px solid var(--border);
@@ -212,10 +271,12 @@ td {
 .review-quote {
   font-style: italic;
 }
+
 .review-author {
   margin-top: 15px;
   color: var(--gold);
 }
+
 /* аватарки в отзывах */
 .review-avatar {
   width: 50px;
@@ -225,6 +286,59 @@ td {
   object-position: center;
   border: 2px solid var(--gold-dim);
   margin-bottom: 15px;
+}
+
+/* корзина */
+.cart-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 15px;
+}
+
+.cart-item:last-child {
+  margin-bottom: 0;
+  border-bottom: none;
+}
+
+.cart-item-info {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex: 1;
+}
+
+.cart-item-name {
+  font-size: 0.95rem;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 200px;
+}
+
+.cart-item-price {
+  font-weight: bold;
+  min-width: 80px;
+  text-align: right;
+}
+
+.btn-delete {
+  background: transparent;
+  color: var(--text-muted);
+  border: 1px solid var(--border);
+  padding: 6px 12px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.85rem;
+  cursor: pointer;
+  transition: all 0.2s;
+  border-radius: 4px;
+}
+
+.btn-delete:hover {
+  color: var(--gold);
+  border-color: var(--gold-dim);
 }
 
 /* футер */
@@ -237,24 +351,23 @@ footer {
   font-size: 0.9rem;
 }
 
+/* адаптив сетки */
 @media (max-width: 992px) {
   .grid-2 {
     grid-template-columns: 1fr;
     text-align: center;
   }
+
   .hero-img {
     margin-top: 30px;
   }
 }
 
 @media (max-width: 600px) {
-  .nav-links a {
-    margin-left: 15px;
-    font-size: 0.85rem;
-  }
   h1 {
     font-size: 2.2rem;
   }
+
   .logo {
     font-size: 1.6rem;
   }
