@@ -49,13 +49,15 @@ h3,
 header {
   background: rgba(10, 8, 10, 0.95);
   border-bottom: 2px solid var(--gold-dim);
-  padding: 20px 0;
+  padding: 12px 0;
   box-shadow: 0 4px 20px rgba(106, 4, 15, 0.4);
   position: sticky;
   top: 0;
   z-index: 100;
+  height: 60px; 
 }
 
+/* навигация */
 .nav-container {
   max-width: 1200px;
   margin: 0 auto;
@@ -63,76 +65,63 @@ header {
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
+  height: 100%;
+  gap: 20px;
 }
 
 .logo {
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 900;
+  white-space: nowrap;
+  color: var(--gold);
 }
 
 .logo span {
   color: var(--blood-light);
 }
 
-/* навигация */
 .nav-links {
   display: flex;
-  gap: 15px;
-  flex-wrap: wrap;
-  justify-content: center;
   align-items: center;
+  gap: 10px;
   list-style: none;
   padding: 0;
   margin: 0;
+  flex-wrap: nowrap;       
+  overflow-x: auto;        
+  -webkit-overflow-scrolling: touch;
+  scrollbar-width: none;  
+}
+
+.nav-links::-webkit-scrollbar {
+  display: none;
 }
 
 .nav-links a {
   color: var(--text-muted);
   text-decoration: none;
   font-family: 'Cinzel', serif;
-  font-size: 0.95rem;
-  padding: 10px 15px;
+  font-size: 0.9rem;
+  padding: 6px 14px;
   border-radius: 4px;
-  transition: all 0.3s;
-  text-align: center;
+  transition: all 0.2s;
+  white-space: nowrap;    
+  flex-shrink: 0;         
 }
 
-.nav-links a:hover {
+.nav-links a:hover,
+.nav-links a.active {
   color: var(--gold);
   text-shadow: 0 0 6px var(--gold-dim);
-  background: rgba(212, 175, 55, 0.1);
+  background: rgba(212, 175, 55, 0.15);
 }
 
-/* адаптив для навигации */
-@media (max-width: 768px) {
-  .nav-container {
-    flex-direction: column;
-    padding: 10px;
-    gap: 10px;
-  }
-
-  .nav-links {
-    flex-direction: column;
-    width: 100%;
-    align-items: stretch;
-  }
-
-  .nav-links a {
-    width: 100%;
-    text-align: center;
-    padding: 12px;
-    font-size: 1rem;
-  }
-}
-
-/* контейнер */
 .container {
   max-width: 1200px;
   margin: 40px auto;
   padding: 0 20px;
 }
 
-/* сетка */
 .grid {
   display: grid;
   gap: 30px;
@@ -148,7 +137,6 @@ header {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 }
 
-/* карточки */
 .card {
   background: var(--panel);
   border: 1px solid var(--border);
@@ -174,7 +162,6 @@ header {
   background: var(--blood);
 }
 
-/* кнопки */
 .btn {
   display: inline-block;
   padding: 12px 30px;
@@ -187,6 +174,7 @@ header {
   font-size: 1rem;
   letter-spacing: 1px;
   transition: all 0.3s;
+  border-radius: 6px;
 }
 
 .btn:hover {
@@ -195,7 +183,6 @@ header {
   box-shadow: 0 0 15px rgba(193, 18, 31, 0.7);
 }
 
-/* галерея */
 .boost-gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
@@ -219,7 +206,6 @@ header {
   border-color: var(--gold-dim);
 }
 
-/* формы */
 .form-group {
   margin-bottom: 20px;
 }
@@ -247,7 +233,6 @@ header {
   border-color: var(--gold);
 }
 
-/* таблицы */
 table {
   width: 100%;
   border-collapse: collapse;
@@ -267,7 +252,6 @@ td {
   color: var(--text-muted);
 }
 
-/* блоки отзывов */
 .review-quote {
   font-style: italic;
 }
@@ -277,7 +261,6 @@ td {
   color: var(--gold);
 }
 
-/* аватарки в отзывах */
 .review-avatar {
   width: 50px;
   height: 50px;
@@ -288,7 +271,6 @@ td {
   margin-bottom: 15px;
 }
 
-/* корзина */
 .cart-item {
   display: flex;
   justify-content: space-between;
@@ -341,7 +323,6 @@ td {
   border-color: var(--gold-dim);
 }
 
-/* футер */
 footer {
   margin-top: 60px;
   text-align: center;
@@ -351,7 +332,7 @@ footer {
   font-size: 0.9rem;
 }
 
-/* адаптив сетки */
+/* адаптив */
 @media (max-width: 992px) {
   .grid-2 {
     grid-template-columns: 1fr;
@@ -361,9 +342,7 @@ footer {
   .hero-img {
     margin-top: 30px;
   }
-}
 
-@media (max-width: 600px) {
   h1 {
     font-size: 2.2rem;
   }
